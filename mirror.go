@@ -32,7 +32,35 @@ func Cast(from interface{}, to interface{}) (err error) {
 	case map[string]interface{}:
 		err = mapstructure.Decode(from, to)
 	default:
-		reflect.ValueOf(to).Elem().Set(reflect.ValueOf(from))
+		switch reflect.ValueOf(to).Elem().Type().Kind() {
+		case reflect.Int:
+			switch t := from.(type) {
+			case int8:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case int16:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case int32:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case int64:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case uint8:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case uint16:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case uint32:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			case uint64:
+				reflect.ValueOf(to).Elem().Set(reflect.ValueOf(int(t)))
+			}
+		//case reflect.Float64:
+		//	switch t := from.(type) {
+		//	case float32:
+		//		reflect.ValueOf(to).Elem().Set(reflect.ValueOf(float64(t)))
+		//	}
+		default:
+			reflect.ValueOf(to).Elem().Set(reflect.ValueOf(from))
+		}
+
 	}
 	return
 }

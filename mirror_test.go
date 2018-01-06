@@ -19,40 +19,54 @@ func TestInt(t *testing.T) {
 	assert := assert.New(t)
 	var i int
 	any = 123456
-	Cast(any, &i)
+	err := Cast(any, &i)
 	assert.Equal(123456, i)
+	assert.NoError(err)
+}
+
+func TestInt64ToInt(t *testing.T) {
+	assert := assert.New(t)
+	var i int
+	any = int64(123456)
+	err := Cast(any, &i)
+	assert.Equal(123456, i)
+	assert.NoError(err)
 }
 
 func TestString(t *testing.T) {
 	assert := assert.New(t)
 	var s string
 	any = "myString"
-	Cast(any, &s)
+	err := Cast(any, &s)
 	assert.Equal("myString", s)
+	assert.NoError(err)
 }
 
 func TestFloat64(t *testing.T) {
 	assert := assert.New(t)
 	var f float64
 	any = 3.141592653
-	Cast(any, &f)
+	err := Cast(any, &f)
 	assert.Equal(3.141592653, f)
+	assert.NoError(err)
 }
 
 func TestByteSlice(t *testing.T) {
 	assert := assert.New(t)
 	var b []byte
 	any = []byte{32, 64, 128}
-	Cast(any, &b)
+	err := Cast(any, &b)
 	assert.Equal([]byte{32, 64, 128}, b)
+	assert.NoError(err)
 }
 
 func TestIntSlice(t *testing.T) {
 	assert := assert.New(t)
 	var is []int
 	any = []int{1, 2, 3}
-	Cast(any, &is)
+	err := Cast(any, &is)
 	assert.Equal([]int{1, 2, 3}, is)
+	assert.NoError(err)
 }
 
 func TestMapStringInterface(t *testing.T) {
@@ -62,19 +76,21 @@ func TestMapStringInterface(t *testing.T) {
 		"string": "myString",
 		"int":    123456,
 	}
-	Cast(any, &m)
+	err := Cast(any, &m)
 	assert.Equal(map[string]interface{}{
 		"string": "myString",
 		"int":    123456,
 	}, m)
+	assert.NoError(err)
 }
 
 func TestStruct(t *testing.T) {
 	assert := assert.New(t)
 	var st structType
 	any = structType{"myString", 123456}
-	Cast(any, &st)
+	err := Cast(any, &st)
 	assert.Equal(structType{"myString", 123456}, st)
+	assert.NoError(err)
 }
 
 func TestError(t *testing.T) {
