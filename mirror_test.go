@@ -76,3 +76,9 @@ func TestStruct(t *testing.T) {
 	Cast(any, &st)
 	assert.Equal(structType{"myString", 123456}, st)
 }
+
+func TestError(t *testing.T) {
+	assert := assert.New(t)
+	err := Cast(any, nil)
+	assert.Error(err)
+}
