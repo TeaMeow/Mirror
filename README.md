@@ -34,6 +34,6 @@ func main() {
 	var i int
 	any = 123456
 	mirror.Cast(any, &i)
-    fmt.Println(i) // 輸出：123456
+	fmt.Println(i) // 輸出：123456
 }
 ```
