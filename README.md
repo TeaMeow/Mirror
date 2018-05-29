@@ -1,4 +1,4 @@
-# Mirror
+# Mirror [![GoDoc](https://godoc.org/github.com/teacat/mirror?status.svg)](https://godoc.org/github.com/teacat/mirror) [![Coverage Status](https://coveralls.io/repos/github/teacat/mirror/badge.svg?branch=master)](https://coveralls.io/github/teacat/mirror?branch=master) [![Build Status](https://travis-ci.org/teacat/mirror.svg?branch=master)](https://travis-ci.org/teacat/mirror) [![Go Report Card](https://goreportcard.com/badge/github.com/teacat/mirror)](https://goreportcard.com/report/github.com/teacat/mirror)
 
 米洛能以最簡單的方式協助你將一個未知的 `interface{}` 宣告到另一個已知的 `interface{}` 指針所指向的建構體或資料。這很適合設計套件時將一個未知型態的資料綁定到未知型態的指針上。
 
